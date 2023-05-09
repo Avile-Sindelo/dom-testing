@@ -29,11 +29,14 @@ function BillWithSettings(){
         return grandTotal >= theCriticalLevel;
     }
 
-    function makeCall(){    
-        //Update the total for calls
-        theTotalCallCost += theCallCost;
-        //Update the grand total
-        grandTotal += theCallCost;
+    function makeCall(){  
+        if(grandTotal <= theCriticalLevel){
+            //Update the total for calls
+            theTotalCallCost += theCallCost;
+            //Update the grand total
+            grandTotal += theCallCost;
+        }  
+        
         //If the grand total is greater than or equal to the warning level
         if(grandTotal >= theWarningLevel){
             //Make WARNING the active class
@@ -49,8 +52,11 @@ function BillWithSettings(){
     }
 
     function sendSms(){
-        theTotalSmsCost += theSmsCost;
-        grandTotal += theSmsCost;
+        if(grandTotal <= theCriticalLevel){
+            theTotalSmsCost += theSmsCost;
+            grandTotal += theSmsCost;
+        }
+       
         //If the grand total is greater than or equal to the warning level
         if(grandTotal >= theWarningLevel){
             //Make WARNING the active class
@@ -94,6 +100,10 @@ function BillWithSettings(){
         return activeClass;
     }
 
+    function getGrandTotal(){
+        return grandTotal;
+    }
+
     //exposure
     return {
         getCallCost,
@@ -109,6 +119,7 @@ function BillWithSettings(){
         sendSms,
         getTotalSmsCost,
         className,
-        hasReachedCriticalLevel
+        hasReachedCriticalLevel,
+        getGrandTotal
     }
 }
