@@ -66,7 +66,7 @@ describe('Using the values of the Settings bill widget', function(){
         settingsBill7.sendSms();
         settingsBill7.makeCall();
       
-        assert.equal('warning', settingsBill7.className());
+        assert.equal('warning', settingsBill7.getClassName());
     });
 
     it('should set the call cost, sms cost, warning level and critical level. Make a couple of calls and SMSs until the Critical level is reached. And then check if you CANNOT make calls or send SMSs any further', function(){
@@ -97,6 +97,6 @@ describe('Using the values of the Settings bill widget', function(){
         settingsBill8.makeCall();
 
         assert.equal(23.5, settingsBill8.getGrandTotal());
-        assert.equal('danger', settingsBill8.className());
+        assert.equal('danger', settingsBill8.getClassName());
     });
 });

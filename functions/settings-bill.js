@@ -25,10 +25,6 @@ function BillWithSettings(){
         theCriticalLevel = criticalLevel;
     }
 
-    function hasReachedCriticalLevel(){
-        return grandTotal >= theCriticalLevel;
-    }
-
     function makeCall(){  
         if(grandTotal <= theCriticalLevel){
             //Update the total for calls
@@ -96,7 +92,7 @@ function BillWithSettings(){
         return theTotalSmsCost;
     }
 
-    function className(){
+    function getClassName(){
         return activeClass;
     }
 
@@ -118,8 +114,7 @@ function BillWithSettings(){
         getTotalCallCost,
         sendSms,
         getTotalSmsCost,
-        className,
-        hasReachedCriticalLevel,
+        getClassName,
         getGrandTotal
     }
 }
